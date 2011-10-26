@@ -1,0 +1,80 @@
+The most general way of writing down what I want is the following.  Let  $G_{\mathbb{X}}$ be a conditional distribution indexed by context/ observed/unobserved feature set $\mathbb{X}$.  For now, let contexts be members of the set of all $D$ dimensional binary vectors $\mathbb{X} \in \{0,1\}^D$.  Let $\mathrm{pa}(\mathbb{X}) = \{ x \in \{0,1\}^{D-1} \;\mbox{s.t.}\; x(d)= \mathbb{X}(i) \,\forall\, i \}$ \frank{this notation is totally f'ed up but I can't be bothered right now} be a function that maps a context to all of it's $D-1$ dimensional generalizations.  In words,  $\mathrm{pa}(\mathbb{X})$ is the set of all contexts that are equal in value except one entry.
+
+\frank{My dream here is {\em all} generalizations.  Note, I have been intentionally vague about whether or not the value is \underline{marginalized out} (i.e.~replaced with a wildcard) or  \underline{deleted}, i.e.~treated as if not actually there.  This is because I'm not sure which is more important or which I want for sure.  Actually, in conditioning is there really a difference?}
+
+\frank{Also, I'm bothered while writing this that what I'm aiming for might simply be structure learning for an automata of fixed architecture.  Much better then to ensure that latent variables get mixed into the set of features.}
+
+OK, here goes.  
+
+Let 
+
+\eqa
+G_{\epsilon} &\sim& \NS(\alpha_0,\mathbb{U}) \\
+G_{\mathbb{X}} &\sim& \NS(\alpha_{|\mathbb{X}|}, \sum_{x \in \mathrm{pa}{(\mathbb{X})}}\lambda_x G_x)\\
+x|\mathbb{X} &\sim& G_{\mathbb{X}}
+\ena
+
+\subsection{Graphical Normalized Stable}
+
+Let
+$\NS(\alpha,H)$ be a normalized stable process (e.g. your \PY) with base measure $H$ and
+discount parameter $\alpha$.)
+
+if:
+\eqa
+H &\sim& \NS(\alpha_1, \lambda_A A + \lambda_B B + \lambda_C C)\\
+G &\sim& \NS(\alpha_2, H)
+\ena
+
+then does:
+\eqn G \sim \NS(\alpha^*, \gamma_A A + \gamma_B B + \gamma_C C) \enn ?
+
+I have a couple of questions/comments:
+
+1. Are $A$, $B$ and $C$ assumed to be observed nodes? If so, then we can
+treat  \eqn (\lambda_A A + \lambda_B B + \lambda_C C) \enn as any old base measure,
+which means that:
+
+\eqn G\sim\NS(\alpha_1 \alpha_2, \lambda_A A + \lambda_B B + \lambda_C C) \enn
+
+2. Are $A$, $B$ and $C$ assumed to be unobserved as well? If so, do we have
+something like \eqn A \sim \NS(\alpha_A, \Omega_A) \enn, etc? ie are they all samples
+from some \PY? If so, then:
+
+\eqn (\lambda_A A + \lambda_B B + \lambda_C C) \sim \NS(\alpha^*, \Omega_A + \Omega_B
++ \Omega_C) \enn,
+iff the following two conditions hold:
+
+\eqa
+1. && \alpha_A = \alpha_B = \alpha_C = \alpha^* \\
+2. && \lambda_k \sim \mbox{alpha-stable}(\alpha*)  \leftarrow  \mbox{alpha-stable distribution}
+\ena
+
+Unfortunately, you can only add stable processes to get a stable
+process if they have the same $\alpha$. Which is somewhat limiting, both
+in what you have to instantiate (basically, all your nodes in the sum
+have to have the same distance to their most recent observed parent),
+and in allowing a random number of nodes in the summation (because you
+have to have a symmetric distribution over the weights $\lambda$ -- with
+\DP s, you can have a skewed distribution).
+
+If this holds, then:
+\eqa
+G|\Omega_A, \Omega_B, \Omega_C &\sim& \NS(\alpha* \alpha_1, \Omega_A + \Omega_B + \Omega_C)\\
+H|\Omega_A, \Omega_B, \Omega_C &\sim& \NS(\alpha* \alpha_1 \alpha_2, \Omega_A +
+\Omega_B + \Omega_C)
+\ena
+
+Do either of those give you what you need? If not, can you explain
+again what you're after?
+
+\subsection{Interesting result for compression?}
+
+Question: is this of interest too?  And what does it ``given $G_2$'' mean here?  \frank{It means, in the sequence memoizer sense, that $G_2$ isn't marginalized out of the representation and that, in the standard HDP sense, we have (whilst sampling) draws from it (CRF-style).}
+
+\eqan
+G_0 & \sim& \NS(\\alpha_1, H) \\
+G_1 & \sim&  \NS(\\alpha_2, G_0) \\
+G_2 & \sim&  \NS(\\alpha_2, G_0) \\
+G_1 | G_2, G_0 &\sim&  ?
+\enan

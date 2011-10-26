@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage{nips10submit_e,times}
+
+
+%\documentstyle[nips07submit_09,times]{article}
+\usepackage[square,numbers]{natbib}
+%\usepackage{amsmath, epsfig}
+%\usepackage{amsfonts}
+%\usepackage{subfigure}
+%\usepackage{graphicx}
+%\usepackage{amsfonts}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+%\usepackage{easybmat}
+%\usepackage{footmisc}
+%\usepackage{lscape}
+%\usepackage{subfigure}
+%\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+%\usepackage{aistats2012}
+\usepackage{epsfig}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{framed}
+\usepackage{natbib}
+\usepackage{subfig}
+\usepackage{xspace}
+\usepackage[normalem]{ulem}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{balance}
+\renewcommand\algorithmiccomment[1]{// \textit{#1}}
+%
+\newcommand{\ignore}[1]{}
+\newcommand{\comment}[1]{}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\long\def\comment#1{}
+
+\newcommand{\eq}{\begin{equation*}}
+\newcommand{\en}{\end{equation*}}
+\newcommand{\eqa}{\begin{eqnarray*}}
+\newcommand{\ena}{\end{eqnarray*}}
+\newcommand{\eqn}{\begin{equation}}
+\newcommand{\enn}{\end{equation}}
+\newcommand{\eqan}{\begin{eqnarray}}
+\newcommand{\enan}{\end{eqnarray}}
+
+\newcommand{\sinead}[1]{\textcolor{red}{\textsf{\emph{\textbf{\textcolor{red}{#1}}}}}}
+\newcommand{\frank}[1]{\textcolor{red}{\textsf{\emph{\textbf{\textcolor{blue}{#1}}}}}}
+\newcommand{\cosma}[1]{\textcolor{red}{\textsf{\emph{\textbf{\textcolor{green}{#1}}}}}}
+
+\newcommand{\NS}{\ensuremath{\mathcal{NS}}}
+\newcommand{\PY}{\ensuremath{\mathcal{PY}}}
+\newcommand{\DP}{\ensuremath{\mathcal{DP}}}
+\newcommand{\ngram}{\ensuremath{n}-gram }
+
+\title{Graphical Normalized Stable Processes }
+%Supervised Topic Modeling in Clinical Text}
+
+\author{
+Frank Wood\\
+Columbia University\\
+New York, NY 10027, USA \\
+\texttt{fwood@stat.columbia.edu}
+\and
+\bf Sinead Williamson\\
+ Carnegie Mellon University\\
+Pittsburgh, PA 15213, USA\\
+\texttt{sinead+@cs.cmu.edu} 
+%\texttt{pfau@neurotheory.columbia.edu} 
+%\texttt{\{bartlett,fwood\}@stat.columbia.edu} 
+}
+
+
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to \LaTeX{} to determine where to break
+% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
+% puts 3 of 4 authors names on the first line, and the last on the second
+% line, try using \AND instead of \And before the third author name.
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+\newcommand{\X}{\mathcal{X}}
+
+
+\nipsfinalcopy
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\section{Introduction}
+\label{sec:introduction}
+\input{introduction}
+
+
+%\section{Background}
+
+
+
+
+\section{Model}
+\label{sec:model}
+\input{model}
+
+\section{Inference}
+\label{sec:inference}
+\input{inference}
+
+\section{Related Work}
+
+\label{sec:related_work} 
+\input{related_work}
+
+\section{Experiments}
+
+\label{sec:experiments}
+\input{experiments}
+
+
+\section{Discussion}
+\label{sec:discussion}
+\input{discussion}
+
+
+\begin{small} \bibliographystyle{plainnat} \bibliographystyle{plainnat}
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+
+\end{small} 
+
+\end{document}
+
