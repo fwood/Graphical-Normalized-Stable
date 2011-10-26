@@ -1,3 +1,4 @@
+\sinead{test}
 The most general way of writing down what I want is the following.  Let  $G_{\mathbb{X}}$ be a conditional distribution indexed by context/ observed/unobserved feature set $\mathbb{X}$.  For now, let contexts be members of the set of all $D$ dimensional binary vectors $\mathbb{X} \in \{0,1\}^D$.  Let $\mathrm{pa}(\mathbb{X}) = \{ x \in \{0,1\}^{D-1} \;\mbox{s.t.}\; x(d)= \mathbb{X}(i) \,\forall\, i \}$ \frank{this notation is totally f'ed up but I can't be bothered right now} be a function that maps a context to all of it's $D-1$ dimensional generalizations.  In words,  $\mathrm{pa}(\mathbb{X})$ is the set of all contexts that are equal in value except one entry.
 
 \frank{My dream here is {\em all} generalizations.  Note, I have been intentionally vague about whether or not the value is \underline{marginalized out} (i.e.~replaced with a wildcard) or  \underline{deleted}, i.e.~treated as if not actually there.  This is because I'm not sure which is more important or which I want for sure.  Actually, in conditioning is there really a difference?}
@@ -73,8 +74,8 @@ again what you're after?
 Question: is this of interest too?  And what does it ``given $G_2$'' mean here?  \frank{It means, in the sequence memoizer sense, that $G_2$ isn't marginalized out of the representation and that, in the standard HDP sense, we have (whilst sampling) draws from it (CRF-style).}
 
 \eqan
-G_0 & \sim& \NS(\\alpha_1, H) \\
-G_1 & \sim&  \NS(\\alpha_2, G_0) \\
-G_2 & \sim&  \NS(\\alpha_2, G_0) \\
+G_0 & \sim& \NS(\alpha_1, H) \\
+G_1 & \sim&  \NS(\alpha_2, G_0) \\
+G_2 & \sim&  \NS(\alpha_2, G_0) \\
 G_1 | G_2, G_0 &\sim&  ?
 \enan
