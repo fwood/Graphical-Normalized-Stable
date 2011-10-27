@@ -1,0 +1,25 @@
+
+\section{A completely random measure/L\'{e}vy process view of chains and networks of normalized stable processes}
+
+\subsection{Completely random measures}
+Let $(X,\mathcal{X})$ be some observable space, and $(M,\mathcal{M})$ be the space of measures on that space such that, for any measure $\rho\in\mathcal{M}$, the measures assigned to disjoint subsets $A_1,A_2,\dots \in\mathcal{X}$ are independent. A \emph{completely random measure} (CRM) is a probability distribution over the space $(M,\mathcal{M})$ of such measures.
+
+A completely random measure is an example of an \emph{infinitely divisible} distribution. We say a distribution $\mu$ is infinitely divisible if, for any $X\sim\mu$, and any $n\in\mathbb{n}$, we can write $X = \sum_{i=1}^{n}X^{(i)}$, wherethe $X^{(i)}$ are distributed i.i.d. according to some distribution $\mu^{(n)}$. The independence assumption implicit in the CRM definition ensures that this is the case.
+
+Infinitely divisible distributions can be uniquely defined using the L\'{e}vy-Khintchine representation. The L\'{e}vy-Khintchine representation describes the characteristic function of such distribtions in terms of a measure $\tilde{nu}$ (which governs any discrete random part of the distribution), a drift vector $b$ (which governs any deterministic part of the distribution), and a Gaussian covariance matrix $A$ (which governs any continuous part of the distribution). In the case of completely random measures with no deterministic component,\footnote{A deterministic measure satisfies the requirement of a completely random measure; however we can generally treat any deterministic component of our distribution separately from the random component} the L\'{e}vy-Khintchine representation reduces to the following form:
+
+\begin{equation*}
+\mathbb{E}\bigg[e^{-t\mu(A)}\bigg] = \exp\bigg\{ \int_{z=0}^\infty\int_{x\in A}(1-e^{-tz}\tilde{\nu}(dx,\,dz)\bigg\}\, ,
+\end{equation*}
+where $\tilde{\nu}(dx,\,dz)$ is a positive measure on $X \times \mathbb{R}_+$ that satisfies certain conditions (see eg Sato). In the cases considered herein, and indeed most cases in the literature, we can decompose  $\tilde{\nu}(dx,\,dz) = H(dx)\nu(dz)$\footnote{Cases where this does not hold are often referred to as inhomogeneous or additive CRMs}. We will refer to $H(dx)$ as the base measure, and $\nu(dz)$ as the L\'{e}vy measure.\footnote{Note that the measure $\tilde{\nu}$ is sometimes referred to as the L\'{e}vy measure} The base measure controls the location of the atoms in a CRM-distributed measure; the L\'{e}vy measure controls their size.
+
+Completely random measures on $\mathbb{R_+}$ are related to a class of L\'{e}vy processes known as \emph{subordinators}. A subordinator is a L\'{e}vy process whose sample paths are strictly increasing. This increasing nature means that subordinators are characterized by the same form of the L\'{e}vy-Khintchine representation as completely random measures, although the base measure is generally assumed to be Lebesgue measure. The magnitudes and locations of the jumps in a subordinator with L\'{e}vy measure $\nu$ correspond to the magnitudes and locations of the atoms in a completely random measure with L\'{e}vy measure $\nu$ and Lebesgue base measure. 
+
+Subordinators can be used as operators on L\'{e}vy processes.  Let $\{X(t),t>0\}$ be a L\'{e}vy process, and let $\{Z(t),t>0\}$ be a subordinator. Then the stochastic process defined by $Y(t) = X(Z(t))$ is said to be \emph{subordinated} to $X$ via $Z$. $Y(t)$ is again a L\'{e}vy process, with and its L\'{e}vy measure, drift and Gaussian covariance matrix can be obtained from the corresponding values for $X$ and $Z$ as described in (Sato p 198). If $X$ is again a subordinator, it follows that $Y$ is also a subordinator. 
+
+Samples from completely random measures can be normalized to obtain distributions over probability measures (Kingman:NRMs). While this is possible for any CRM, in most cases it is not practical since the distribution of the normalized atom sizes depends on the normalizing constant. As a result, it is not possible to sample a finite number of atoms from the normalized random measure. However, there are two cases where the normalizing constant is independent of the normalized atom sizes: The gamma process, and the stable process.
+
+
+The gamma process is the completely random measure with L\'{e}vy measure $\nu(dz) = \theta z^{-1}e^{-cz} dz$. If $\gamma(\cdot)$ is a Gamma process on some space $X$, then the normalized random measure $\gamma(\cdot)/\gamma(X)$ is a Dirichlet process, and the distribution of the associated mass partition of $X$ is called the Poisson-Dirichlet distribution with parameters $(0,\theta)$.
+
+The stable process is the completely random measure with L\'{e}vy measure ...
